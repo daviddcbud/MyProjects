@@ -53,12 +53,7 @@ namespace TaxOnline.Data
 
         private bool BeforeSaveTodoList(TodoItem todoList, EntityInfo info)
         {
-            if (info.EntityState == EntityState.Added)
-            {
-                 
-                return true;
-            }
-            return   throwCannotSaveEntityForThisUser();
+            return true;
         }
 
         private bool BeforeSaveTodoItem(TodoItem todoItem, EntityInfo info)
@@ -66,7 +61,7 @@ namespace TaxOnline.Data
             var todoList = ValidationContext.TodoItems.Find(todoItem.Id);
             return (null == todoList)
                        ? throwCannotFindParentTodoList()
-                       :   throwCannotSaveEntityForThisUser();
+                       : throwCannotSaveEntityForThisUser(todoItem.Id);
         }
 
         // "this.Context" is reserved for Breeze save only!
@@ -80,9 +75,9 @@ namespace TaxOnline.Data
         }
         private DataContext _validationContext;
 
-        private bool throwCannotSaveEntityForThisUser()
+        private bool throwCannotSaveEntityForThisUser(int id)
         {
-            throw new SecurityException("Unauthorized user");
+            throw new SecurityException("Can't find item to edit " + id);
         }
 
         private bool throwCannotFindParentTodoList()

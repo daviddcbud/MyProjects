@@ -49,12 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\CustomDatabaseInitializer.cs" />
+    <Compile Include="Configuration\ErrorLogConfiguration.cs" />
     <Compile Include="Configuration\MembershipConfiguratoin.cs" />
     <Compile Include="Configuration\OAuthMembership.cs" />
     <Compile Include="Configuration\RolesConfiguration.cs" />
+    <Compile Include="Configuration\TaxpayerConfiguration.cs" />
     <Compile Include="Configuration\TodoItemConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="ErrorLogRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TodoItemRepository.cs" />
   </ItemGroup>

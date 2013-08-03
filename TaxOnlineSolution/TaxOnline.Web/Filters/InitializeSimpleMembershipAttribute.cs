@@ -22,7 +22,7 @@ namespace TaxOnline.Web.Filters
         {
             // Ensure ASP.NET Simple Membership is initialized only once per app start
             //TODO: remove data initializer
-          //  DataContext context = new DataContext();
+           // DataContext context = new DataContext();
             //context.Database.Initialize(true);
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }

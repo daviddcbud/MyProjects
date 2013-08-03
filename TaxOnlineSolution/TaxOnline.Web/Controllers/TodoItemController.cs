@@ -27,7 +27,7 @@ using TaxOnline.Data;
         {
             return _repository.Metadata();
         }
-
+       
         // POST ~/api/Todo/SaveChanges
         [HttpPost]
         [ValidateHttpAntiForgeryToken]
@@ -41,9 +41,8 @@ using TaxOnline.Data;
         public IQueryable<TodoItem> Todos()
         {
             return _repository.Todos;
-            // We do the following on the client
-            //.Include("Todos")
-            //.OrderByDescending(t => t.TodoListId);
+             
         }
+        
     }
 }

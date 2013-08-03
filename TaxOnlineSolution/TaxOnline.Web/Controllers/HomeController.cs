@@ -13,5 +13,9 @@ namespace TaxOnline.Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+        public PartialViewResult Todo()
+        {
+            return PartialView("_todo");
+        }
     }
 }

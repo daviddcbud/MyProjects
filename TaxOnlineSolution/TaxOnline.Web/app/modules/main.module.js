@@ -12,6 +12,9 @@ mainModule.value('breeze', window.breeze)
 mainModule.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/', { templateUrl: 'app/templates/index.view.html', controller: 'MainController' }).
+		when('/about', { templateUrl: 'app/templates/about.view.html', controller: 'MainController' }).
+		when('/todos', { templateUrl: 'Home/Todo', controller: 'ToDoController' }).
+		when('/logfiles', { templateUrl: 'app/templates/logs.view.html', controller: 'LogFilesController' }).
 		otherwise({ redirectTo: '/' });
 }]);
 

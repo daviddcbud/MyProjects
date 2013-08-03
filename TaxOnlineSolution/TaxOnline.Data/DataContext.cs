@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaxOnline.Models;
-using System.Configuration;
+
 using TaxOnline.Data.Configuration;
 using System.Data.Entity;
 namespace TaxOnline.Data
@@ -16,7 +16,8 @@ namespace TaxOnline.Data
          
         public DbSet<Role> Roles { get; set; }
         public DbSet<TodoItem> TodoItems { get; set; }
-
+        public DbSet<Taxpayer> Taxpayers { get; set; }
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
         public static string ConnectionStringName
         {
             get
@@ -55,6 +56,8 @@ namespace TaxOnline.Data
             modelBuilder.Configurations.Add(new RolesConfiguration());
             modelBuilder.Configurations.Add(new OAuthMembershipConfiguration());
             modelBuilder.Configurations.Add(new TodoItemConfiguration());
+            modelBuilder.Configurations.Add(new TaxpayerConfiguration());
+            modelBuilder.Configurations.Add(new ErrorLogConfiguration());
             //base.OnModelCreating(modelBuilder);
         }
     }

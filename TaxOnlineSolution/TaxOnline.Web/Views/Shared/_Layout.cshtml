@@ -9,31 +9,25 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <!-- Latest compiled and minified CSS -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
 
     @Styles.Render("~/Content/themes/base/css")
 </head>
-<body data-ng-app="mainModule">
+<body data-ng-app="mainModule"  data-ng-cloak="">
     <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
     <div id="userSettings">
         @Html.Partial("_UserSettings")
     </div>
     
-<div class="alert" data-ng-controller="MainController">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <span>{{ error }}</span>
-    some errror
-
-    <ul>
-        <li ng-repeat="todo in todos">{{ todo.message }}</li>
-    </ul>
-</div>
 
 
     <div id="body">
 
         @if (@User.Identity.IsAuthenticated)
         {
+             <a href="#/about">About</a>
+              <a href="#/todos">ToDos</a>
+              <a href="#/logfiles">Logs</a>
             <div data-ng-view="" data-ng-animate=" 'animate' "></div> <!-- The SPA Views go here -->   
         }
         else

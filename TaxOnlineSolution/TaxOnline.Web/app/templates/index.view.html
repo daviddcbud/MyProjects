@@ -1,14 +1,14 @@
-﻿ 
-<div id="main-content" data-ng-app="mainModule">
-<header>
-    <h1>{{title}}</h1>
-</header>
-<div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  {{ error }}
-    some errror
+﻿<div id="main-content">
+   
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span>{{ error }}</span>
+        some errror
+
+  
+    </div>
+   
+
+
 </div>
- 
-    <div data-ng-view="" data-ng-animate=" 'animate' "></div> <!-- The SPA Views go here -->   
- </div>
 
