@@ -16,5 +16,11 @@ namespace TaxOnline.Models
         public string Zip { get; set; }
         public string PhoneNumber { get; set; }
         public bool  InvalidAddress { get; set; }
+        public ICollection<TaxNotice> TaxNotices { get; set; }
+        public int TaxYear { get; set; }
+        public Taxpayer()
+        {
+            TaxNotices = new List<TaxNotice>();
+        }
     }
 }

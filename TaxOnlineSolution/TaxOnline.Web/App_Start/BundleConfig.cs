@@ -32,14 +32,14 @@ namespace TaxOnline.Web
 
             bundles.Add(new ScriptBundle("~/bundles/mainscripts").Include(
              "~/app/modules/main.module.js", // must be first
+                          "~/app/services/utils.js",
+             "~/app/services/logger.js",
+             "~/app/services/search.js",
              "~/app/controllers/main.controller.js",
              "~/app/controllers/todo.controller.js",
              "~/app/controllers/logs.controller.js",
-          
-            
-             "~/app/services/utils.js",
-             "~/app/services/logger.js"
-             
+             "~/app/controllers/search.controller.js"
+
              ));
 
             bundles.Add(new ScriptBundle("~/bundles/todo").Include(

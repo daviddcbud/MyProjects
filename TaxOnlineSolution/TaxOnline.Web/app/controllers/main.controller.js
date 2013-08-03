@@ -7,12 +7,12 @@
  *     logger - records notable events during the session (about.logger.js)
  */
 mainModule.controller('MainController',
-    ['$scope', 'breeze', 'logger',
+    ['$scope', 'logger',
     function ($scope,  logger) {
 
-        logger.log("creating Main Controller");
+        
         $scope.error = 'Hello';
         $scope.title = 'Test';
-        
+        logger.log("creating Main Controller");
          
     }]);

@@ -25,6 +25,26 @@ namespace TaxOnline.Data.Configuration
             context.TodoItems.Add(todo);
             todo = new TodoItem();
             todo.Message = "test2";
+
+            var taxpayer = new Taxpayer();
+            taxpayer.Name = "Freeman, David";
+            taxpayer.AddressLines = "3512 Main St";
+            taxpayer.TaxYear = 2013;
+            var notice = new TaxNotice();
+            notice.TaxYear = 2013;
+            notice.BillNumber = "12342";
+            taxpayer.TaxNotices.Add(notice);
+            context.Taxpayers.Add(taxpayer);
+
+            taxpayer = new Taxpayer();
+            taxpayer.Name = "Freeman, John";
+            taxpayer.AddressLines = "3512 Main St";
+            taxpayer.TaxYear = 2013;
+             notice = new TaxNotice();
+            notice.TaxYear = 2013;
+            notice.BillNumber = "12342";
+            taxpayer.TaxNotices.Add(notice);
+            context.Taxpayers.Add(taxpayer);
             context.TodoItems.Add(todo);
             base.Seed(context);
         }

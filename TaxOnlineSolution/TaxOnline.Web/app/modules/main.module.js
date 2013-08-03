@@ -4,9 +4,8 @@
  
 window.mainModule = angular.module('mainModule', []);
 
-// Add global "services" (like breeze and Q) to the Ng injector
-mainModule.value('breeze', window.breeze)
-    .value('Q', window.Q);
+
+
 
 // Configure routes
 mainModule.config(['$routeProvider', function ($routeProvider) {
@@ -15,37 +14,40 @@ mainModule.config(['$routeProvider', function ($routeProvider) {
 		when('/about', { templateUrl: 'app/templates/about.view.html', controller: 'MainController' }).
 		when('/todos', { templateUrl: 'Home/Todo', controller: 'ToDoController' }).
 		when('/logfiles', { templateUrl: 'app/templates/logs.view.html', controller: 'LogFilesController' }).
+        when('/search', { templateUrl: 'app/templates/search.view.html', controller: 'SearchController' }).
 		otherwise({ redirectTo: '/' });
 }]);
 
 //#region Ng directives
 /*  We extend Angular with custom data bindings written as Ng directives */
-mainModule.directive('onFocus', function () {
+mainModule.directive('ngFocus', function () {
 	return {
 		restrict: 'A',
 		link: function (scope, elm, attrs) {
 			elm.bind('focus', function () {
-				scope.$apply(attrs.onFocus);
+				scope.$apply(attrs.ngFocus);
 			});
 		}
 	};
 })
-    .directive('onBlur', function () {
+    .directive('ngBlur', function () {
     	return {
     		restrict: 'A',
     		link: function (scope, elm, attrs) {
     			elm.bind('blur', function () {
-    				scope.$apply(attrs.onBlur);
+    				scope.$apply(attrs.ngBlur);
     			});
     		}
     	};
     })
-    .directive('onEnter', function () {
+    .directive('ngEnter', function () {
     	return function (scope, element, attrs) {
-    		element.bind("keydown keypress", function (event) {
-    			if (event.which === 13) {
+    	    element.bind("keydown keypress", function (event) {
+    	        
+    		    if (event.which === 13) {
+    		       
     				scope.$apply(function () {
-    					scope.$eval(attrs.onEnter);
+    				    scope.$eval(attrs.ngEnter);
     				});
 
     				event.preventDefault();

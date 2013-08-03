@@ -1,0 +1,24 @@
+﻿
+
+<input type="search" data-ng-enter="search()" data-ng-model="searchfor" />
+<button class="btn btn-primary" data-ng-click="search()">Search</button>
+<img src="/Content/ajax-loader.gif" data-ng-show="loading" />
+
+<div data-ng-show="showResults">
+Results
+<table class="table table-striped">
+    <thead>
+        <tr><th>Bill#</th>
+        <th>Name</th>
+        <th>Balance</th></tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="result in results">
+            <td>{{ result.billNumber }}</td>
+            <td>{{ result.name }}</td>
+            <td>{{ result.balance }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+ 

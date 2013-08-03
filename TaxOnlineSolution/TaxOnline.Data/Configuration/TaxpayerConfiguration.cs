@@ -14,6 +14,7 @@ namespace TaxOnline.Data.Configuration
            this.Property((p) => p.State).HasMaxLength(20).HasColumnType("nvarchar");
            this.Property((p) => p.Zip).HasMaxLength(20).HasColumnType("nvarchar");
            this.Property((p) => p.PhoneNumber).HasMaxLength(40).HasColumnType("nvarchar");
+           this.HasMany(p => p.TaxNotices);
        }
     }
 }

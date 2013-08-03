@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
@@ -228,6 +229,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\SearchParamsVM.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\TodoList.cs" />
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Models\TodoItemContext.cs" />
@@ -237,12 +240,15 @@
   <ItemGroup>
     <Content Include="app\controllers\logs.controller.js" />
     <Content Include="app\controllers\main.controller.js" />
+    <Content Include="app\controllers\search.controller.js" />
     <Content Include="app\controllers\todo.controller.js" />
     <Content Include="app\services\logger.js" />
+    <Content Include="app\services\search.js" />
     <Content Include="app\services\utils.js" />
     <Content Include="app\templates\about.view.html" />
     <Content Include="app\templates\index.view.html" />
     <Content Include="app\templates\logs.view.html" />
+    <Content Include="app\templates\search.view.html" />
     <Content Include="app\templates\todos.view.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\ajax-loader.gif" />

@@ -14,8 +14,9 @@ mainModule.factory('snsutils',
         function ajaxget(cache,controllerName, parameters) {
             var ajax = $.ajax({
                 url: "/api/" + controllerName,
-                data: JSON.stringify(parameters),
+                data: parameters,
                 type: "GET"
+                
                 
             });
             return ajax;

@@ -31,7 +31,7 @@ mainModule.factory('dblogger',
 
     
     var dblogger = {
-        log: log,
+        log: log
         
         
     };
