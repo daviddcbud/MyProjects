@@ -1,9 +1,13 @@
 ﻿
-
+<label for="searchType" />
+ <select data-ng-model="searchtype" data-ng-options="c.name for c in searchtypes"></select><br>
 <input type="search" data-ng-enter="search()" data-ng-model="searchfor" />
 <button class="btn btn-primary" data-ng-click="search()">Search</button>
 <img src="/Content/ajax-loader.gif" data-ng-show="loading" />
 
+<div class="alert alert-warning" data-ng-show="showMessage">
+    {{message}}
+ </div>
 <div data-ng-show="showResults">
 Results
 <table class="table table-striped">

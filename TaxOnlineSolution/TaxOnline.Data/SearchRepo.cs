@@ -18,10 +18,28 @@ namespace TaxOnline.Data
             UserId = user.Identity.Name;
         }
         public string UserId { get; private set; }
-        public List<TaxNotice> Search(string searchFor)
+        public List<TaxNotice> Search(string searchFor,int searchtypeid)
         {
-            var query = _context.TaxNotices.Include("Taxpayer").Where(p => p.Taxpayer.Name.StartsWith(searchFor));
-            return query.ToList();
+            if (string.IsNullOrEmpty(searchFor)) return new List<TaxNotice>();
+            switch (searchtypeid)
+            {
+                case 0:
+                    var taxpayerquery = _context.TaxNotices.Include("Taxpayer").Where(p => p.Taxpayer.Name.StartsWith(searchFor));
+                    return taxpayerquery.ToList();
+                     
+                case 1:
+                    var billquery = _context.TaxNotices.Include("Taxpayer").Where(p => p.BillNumber.StartsWith(searchFor));
+                    return billquery.ToList();
+                     
+                case 2:
+                    //var addrquery = _context.TaxNotices.Include("Taxpayer").Where(p => p..Name.StartsWith(searchFor));
+                    //return addrquery.ToList();
+                    return new List<TaxNotice>();
+                     
+                default:
+                    return new List<TaxNotice>();
+            }
+            
         }
  
     }

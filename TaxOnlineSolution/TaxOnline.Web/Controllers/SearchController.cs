@@ -19,9 +19,9 @@ namespace TaxOnline.Web.Controllers
             _repo = new SearchRepo(User);
         }
         // GET api/search
-        public IEnumerable<SearchViewModel> Get(string searchfor)
+        public IEnumerable<SearchViewModel> Get(string searchfor, int searchtype)
         {
-            var results= _repo.Search(searchfor);
+            var results = _repo.Search(searchfor, searchtype);
 
             var list = new List<SearchViewModel>();
             foreach (var item in results)
