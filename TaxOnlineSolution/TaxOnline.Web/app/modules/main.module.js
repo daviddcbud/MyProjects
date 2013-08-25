@@ -15,6 +15,7 @@ mainModule.config(['$routeProvider', function ($routeProvider) {
 		when('/todos', { templateUrl: 'Home/Todo', controller: 'ToDoController' }).
 		when('/logfiles', { templateUrl: 'app/templates/logs.view.html', controller: 'LogFilesController' }).
         when('/search', { templateUrl: 'app/templates/search.view.html', controller: 'SearchController' }).
+        when('/taxnotice/:id', { templateUrl: 'app/templates/taxnotice.view.html', controller: 'TaxNoticeController' }).
 		otherwise({ redirectTo: '/' });
 }]);
 

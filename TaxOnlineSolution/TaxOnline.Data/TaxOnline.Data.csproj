@@ -58,7 +58,9 @@
     <Compile Include="Configuration\TodoItemConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="DataContextMigrationConfiguration.cs" />
     <Compile Include="ErrorLogRepo.cs" />
+    <Compile Include="Interfaces\IErrorLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchRepo.cs" />
     <Compile Include="TodoItemRepository.cs" />

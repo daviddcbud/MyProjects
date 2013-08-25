@@ -2,10 +2,12 @@
 /// <reference path="../services/logger.js" />
 
 mainModule.controller('SearchController',
-    ['$scope', 'logger','search','dblogger',
-    function ($scope, logger,search,dblogger) {
+    ['$scope', 'logger', 'search', 'dblogger', 'statemanager',
+    function ($scope, logger, search, dblogger, statemanager) {
 
         logger.log('search controller');
+        var existingstate = statemanager.getstate('search');
+        logger.log('state=' + existingstate, 'high');
         $scope.searchfor = '';
         $scope.loading = false;
         $scope.results = [];
@@ -13,6 +15,8 @@ mainModule.controller('SearchController',
         $scope.search = dosearch;
         $scope.message = '';
         $scope.showMessage = false;
+
+
         $scope.searchtypes = [
             {
                 name: 'Name',
@@ -29,6 +33,12 @@ mainModule.controller('SearchController',
 
         ];
         $scope.searchtype = $scope.searchtypes[0];
+
+        if (existingstate) {
+            $scope.results = existingstate.results;
+            $scope.showResults = true;
+            $scope.searchtype = $scope.searchtypes[existingstate.searchtype];
+        }
         function dosearch() {
             $scope.showMessage = false;
             $scope.loading = true;
@@ -36,16 +46,21 @@ mainModule.controller('SearchController',
             var params = {};
             params.searchfor = $scope.searchfor;
             params.searchtype = $scope.searchtype.id;
-            
-        search.searchForNotice(params).done(function (data)
-            {
+
+            search.searchForNotice(params).done(function (data) {
+                 
                 success(data);
-            }).fail(function (jqXHR, textStatus, errorThrown)
-            {
-                alert(errorThrown);
+
+                var savedstate = { results: data, searchtype: $scope.searchtype.id };
+                logger.log('adding state');
+                statemanager.addstate(savedstate, 'search');
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                $scope.setError(errorThrown);
+                 
                 dblogger.log(errorThrown);
-            }   
-             );
+                $scope.loading = false;
+            }
+                 );
             refreshView();
         };
         function success(data) {
@@ -57,7 +72,7 @@ mainModule.controller('SearchController',
                 $scope.message = "No Results Found";
             }
             logger.log('success search');
-            $scope.results = data;
+            angular.copy(data, $scope.results);
             $scope.loading = false;
             refreshView();
         }

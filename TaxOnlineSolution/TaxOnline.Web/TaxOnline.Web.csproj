@@ -44,6 +44,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -114,6 +123,9 @@
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApiContrib.IoC.Ninject">
+      <HintPath>..\packages\WebApiContrib.IoC.Ninject.0.9.3.0\lib\net40\WebApiContrib.IoC.Ninject.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -200,6 +212,7 @@
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -240,15 +253,19 @@
   <ItemGroup>
     <Content Include="app\controllers\logs.controller.js" />
     <Content Include="app\controllers\main.controller.js" />
+    <Content Include="app\controllers\base.controller.js" />
     <Content Include="app\controllers\search.controller.js" />
+    <Content Include="app\controllers\taxnotice.controller.js" />
     <Content Include="app\controllers\todo.controller.js" />
     <Content Include="app\services\logger.js" />
     <Content Include="app\services\search.js" />
+    <Content Include="app\services\state.js" />
     <Content Include="app\services\utils.js" />
     <Content Include="app\templates\about.view.html" />
     <Content Include="app\templates\index.view.html" />
     <Content Include="app\templates\logs.view.html" />
     <Content Include="app\templates\search.view.html" />
+    <Content Include="app\templates\taxnotice.view.html" />
     <Content Include="app\templates\todos.view.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\ajax-loader.gif" />
@@ -272,6 +289,8 @@
     <Content Include="app\modules\main.module.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -286,6 +305,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

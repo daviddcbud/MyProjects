@@ -6,7 +6,7 @@
 body {
     background-color: #fff;
     color: #333;
-    max-width: 980px; /*Remove this to make it full screen*/
+   
     margin: 1em auto;
 }
 
@@ -276,3 +276,14 @@ footer {
 .animate-enter.animate-enter-active {
 	opacity: 1;
 }
+
+.menu a:hover {
+    text-decoration:none;
+    
+     
+}
+.menu {
+    border-bottom:2px solid black;
+    margin:5px;
+}
+[ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}

@@ -6,16 +6,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TaxOnline.Data;
+using TaxOnline.Data.Interfaces;
 using TaxOnline.Models;
 
 namespace TaxOnline.Web.Controllers
 {
     public class ErrorLogController : ApiController
     {
-        ErrorLogRepo _repository;
-        public ErrorLogController()
+        IErrorLogger _repository;
+        public ErrorLogController(IErrorLogger errorlogger)
         {
-            _repository = new ErrorLogRepo(User);
+            _repository = errorlogger;
+            _repository.UserID  = User.Identity.Name;
         }
         // GET api/errorlog
         public IEnumerable<string> Get()

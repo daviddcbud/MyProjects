@@ -8,30 +8,34 @@ using System.Threading.Tasks;
 using System.Data.Entity.Infrastructure;
 using System.Security.Principal;
 using System.Security;
+using TaxOnline.Data.Interfaces;
 
 namespace TaxOnline.Data
 {
-    public class ErrorLogRepo 
+
+
+    public class ErrorLogRepo :IErrorLogger
     {
         DataContext _context;
-        public ErrorLogRepo(IPrincipal user)
+
+        public ErrorLogRepo( )
         {
              _context=new DataContext();
-            UserId = user.Identity.Name;
+            
         }
 
-        public string UserId { get; private set; }
+         
 
         public void Save(ErrorLog log)
         {
             log.DateTime = DateTime.Now;
-            log.User = UserId;
+            log.User = UserID;
             _context.ErrorLogs.Add(log);
             _context.SaveChanges();
         }
 
 
 
-      
+        public string UserID { get; set; }
     }
 }

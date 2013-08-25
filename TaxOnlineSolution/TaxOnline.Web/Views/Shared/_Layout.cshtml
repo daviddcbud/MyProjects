@@ -9,27 +9,45 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <!-- Latest compiled and minified CSS -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
 
+    @*@Styles.Render("~/Content/bootstrap.min.css")*@
     @Styles.Render("~/Content/themes/base/css")
 </head>
-<body data-ng-app="mainModule"  data-ng-cloak="">
+<body data-ng-app="mainModule" data-ng-cloak="">
     <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
     <div id="userSettings">
         @Html.Partial("_UserSettings")
     </div>
-    
 
 
-    <div id="body">
 
+    <div id="body" data-ng-controller="BaseController">
+
+       
         @if (@User.Identity.IsAuthenticated)
         {
-             <a href="#/about">About</a>
-              <a href="#/todos">ToDos</a>
-              <a href="#/logfiles">Logs</a>
-            <a href="#/search">Search</a>
-            <div data-ng-view="" data-ng-animate=" 'animate' "></div> <!-- The SPA Views go here -->   
+            <div class="container-fluid" id="mainmenu" >
+                <ul class="nav nav-tabs">
+                    
+                        <li  data-ng-repeat="menu in menus" 
+                            class="{{menu.classname}}">
+                                <a data-ng-click="menuclicked()" href="{{menu.href}}">{{menu.name}}</a>
+
+                        </li>
+                     
+                   
+                </ul>
+
+                  <div class="alert alert-error" style="max-width:500px" data-ng-show="error.length > 0">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                
+                      {{ error }}
+
+                  </div>
+                <div style="padding:10px;" data-ng-view=""   data-ng-animate=" 'animate' "></div>
+                <!-- The SPA Views go here -->
+            </div> 
         }
         else
         {

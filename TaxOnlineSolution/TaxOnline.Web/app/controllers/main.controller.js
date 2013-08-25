@@ -14,5 +14,7 @@ mainModule.controller('MainController',
         $scope.error = 'Hello';
         $scope.title = 'Test';
         logger.log("creating Main Controller");
+
+        
          
     }]);

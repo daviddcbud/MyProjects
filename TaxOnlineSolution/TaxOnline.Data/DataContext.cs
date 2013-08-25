@@ -44,10 +44,17 @@ namespace TaxOnline.Data
         }
         static DataContext()
         {
-            Database.SetInitializer(new CustomDatabaseInitializer());
+            Database.SetInitializer<DataContext>(new MigrateDatabaseToLatestVersion<DataContext, DataContextMigrationConfiguration>());
+          //  Database.SetInitializer(new CustomDatabaseInitializer());
         }
         public DataContext()
-            : base(nameOrConnectionString: ConnectionStringName) { }
+            : base(nameOrConnectionString: ConnectionStringName) {
+                this.Configuration.LazyLoadingEnabled = false;
+                this.Configuration.ProxyCreationEnabled = false;
+                
+
+
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
