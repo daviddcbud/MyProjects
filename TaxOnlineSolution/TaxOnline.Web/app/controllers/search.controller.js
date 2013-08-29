@@ -9,7 +9,7 @@ mainModule.controller('SearchController',
         var existingstate = statemanager.getstate('search');
         logger.log('state=' + existingstate, 'high');
         $scope.searchfor = '';
-        $scope.loading = false;
+         
         $scope.results = [];
         $scope.showResults = false;
         $scope.search = dosearch;
@@ -35,35 +35,46 @@ mainModule.controller('SearchController',
         $scope.searchtype = $scope.searchtypes[0];
 
         if (existingstate) {
+            //load up the ui with existing page state
             $scope.results = existingstate.results;
             $scope.showResults = true;
             $scope.searchtype = $scope.searchtypes[existingstate.searchtype];
+            $scope.searchfor = existingstate.searchfor;
         }
         function dosearch() {
             $scope.showMessage = false;
-            $scope.loading = true;
+            $scope.setloading(true);
             logger.log('searching..');
             var params = {};
             params.searchfor = $scope.searchfor;
             params.searchtype = $scope.searchtype.id;
 
-            search.searchForNotice(params).done(function (data) {
-                 
-                success(data);
 
-                var savedstate = { results: data, searchtype: $scope.searchtype.id };
+            search.searchForNotice(params).then(function (data) {//success
+                success(data);
+                //save page state
+                var savedstate = { results: data, searchtype: $scope.searchtype.id, searchfor:$scope.searchfor };
                 logger.log('adding state');
                 statemanager.addstate(savedstate, 'search');
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                $scope.setError(errorThrown);
-                 
-                dblogger.log(errorThrown);
-                $scope.loading = false;
             }
-                 );
-            refreshView();
+            , 
+            function (data) {//error
+                
+                $scope.addError(data);
+                dblogger.log(data);
+               
+                 
+            }
+            ).then(function () {
+                $scope.setloading(false);
+                
+            }) ;
+
+            
+             
         };
         function success(data) {
+            //load results
             if (data.length > 0) {
                 $scope.showResults = true;
             }
@@ -73,8 +84,8 @@ mainModule.controller('SearchController',
             }
             logger.log('success search');
             angular.copy(data, $scope.results);
-            $scope.loading = false;
-            refreshView();
+            $scope.setloading(false);
+          //  refreshView();
         }
         function refreshView() {
             if (!$scope.$$phase) {

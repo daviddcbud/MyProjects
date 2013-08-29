@@ -1,16 +1,32 @@
 ﻿
 mainModule.factory('snsutils',
-    ['$http', function ($http) {
+    ['$http','$q', function ($http,$q) {
 
 
         var snsutils = {
-           
+            get: get,
             ajaxjsonpost: ajaxjsonpost,
             ajaxget:ajaxget
         };
 
         return snsutils;
 
+
+        function get(controllerName, parameters) {
+            var deferred = $q.defer();
+
+            $http.get('/api/' + controllerName, { params: parameters }).then(function (result) {
+                //send back just the actual data
+                deferred.resolve(result.data);
+            },
+            function (result) {
+                //send back exception message
+                deferred.reject(result.data.exceptionMessage);
+            });
+
+
+            return deferred.promise;
+        }
         function ajaxget(cache,controllerName, parameters) {
             var ajax = $.ajax({
                 url: "/api/" + controllerName,

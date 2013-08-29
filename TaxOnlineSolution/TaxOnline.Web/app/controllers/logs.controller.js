@@ -22,8 +22,15 @@ mainModule.controller('LogFilesController',
         }
 
 
+        $scope.clear = function () {
+            $scope.alllogs = [];
+            $scope.logs = [];
+        }
+
         $scope.logs = logger.logEntries;
         $scope.logtype = '';
+        
+
         $scope.filter = function () {
             
             var filtered = [];

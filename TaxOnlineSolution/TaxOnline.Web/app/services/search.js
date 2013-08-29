@@ -1,17 +1,18 @@
 ﻿mainModule.factory('search',
-    ['snsutils', function (snsutils) {
+    ['snsutils','$http','$q', function (snsutils, $http,$q) {
 
+        var results = [];
 
         var search = {
-
             searchForNotice: searchForNotice
         };
 
         return search;
 
-        function searchForNotice(data) {
-            var ajax = snsutils.ajaxget(false, 'Search', data);
-            return ajax;
+
+        function searchForNotice(parameters) {
+           return snsutils.get('Search', parameters);
+            
         }
 
         

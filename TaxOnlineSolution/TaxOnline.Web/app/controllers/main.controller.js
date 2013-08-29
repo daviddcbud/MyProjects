@@ -11,7 +11,7 @@ mainModule.controller('MainController',
     function ($scope,  logger) {
 
         
-        $scope.error = 'Hello';
+        
         $scope.title = 'Test';
         logger.log("creating Main Controller");
 

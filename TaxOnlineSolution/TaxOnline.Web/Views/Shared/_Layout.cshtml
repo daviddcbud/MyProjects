@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <!-- Latest compiled and minified CSS -->
-     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+    @* <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">*@
 
     @*@Styles.Render("~/Content/bootstrap.min.css")*@
-    @Styles.Render("~/Content/themes/base/css")
+    @* @Styles.Render("~/Content/themes/base/css")*@
 </head>
 <body data-ng-app="mainModule" data-ng-cloak="">
     <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
@@ -24,30 +25,34 @@
 
     <div id="body" data-ng-controller="BaseController">
 
-       
+
         @if (@User.Identity.IsAuthenticated)
         {
-            <div class="container-fluid" id="mainmenu" >
+            
+             
+            <div class="container-fluid" id="mainmenu">
                 <ul class="nav nav-tabs">
-                    
-                        <li  data-ng-repeat="menu in menus" 
-                            class="{{menu.classname}}">
-                                <a data-ng-click="menuclicked()" href="{{menu.href}}">{{menu.name}}</a>
 
-                        </li>
-                     
-                   
+                    <li data-ng-repeat="menu in menus"
+                        class="{{menu.classname}} menuitem">
+                        <a active-link='active' href="{{menu.href}}">{{menu.name}}</a>
+
+                    </li>
+
                 </ul>
-
-                  <div class="alert alert-error" style="max-width:500px" data-ng-show="error.length > 0">
-                      <button type="button" class="close" data-dismiss="alert">&times;</button>
-                
-                      {{ error }}
-
-                  </div>
-                <div style="padding:10px;" data-ng-view=""   data-ng-animate=" 'animate' "></div>
-                <!-- The SPA Views go here -->
             </div> 
+            
+            <div class="row" style="margin-left:10px;">
+                <div class="span6">
+                    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+            </div>
+                
+                
+            <img src="/Content/ajax-loader.gif" data-ng-class="{hidden: !loading}"  />
+            <div style="padding: 10px;" data-ng-view="" data-ng-animate=" 'animate' "></div>
+            <!-- The SPA Views go here -->
+            
         }
         else
         {
@@ -62,8 +67,10 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-    @Scripts.Render("~/bundles/breeze")
+    @Scripts.Render("~/bundles/custombootstrap")
+
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     @Scripts.Render("~/bundles/mainscripts")
     @Scripts.Render("~/bundles/ajaxlogin")

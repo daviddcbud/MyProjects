@@ -2,21 +2,21 @@
 /// <reference path="../../Scripts/breeze.intellisense.js" />
  
  
-window.mainModule = angular.module('mainModule', []);
+window.mainModule = angular.module('mainModule', ['ui.bootstrap']);
 
-
+ 
 
 
 // Configure routes
 mainModule.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
-		when('/', { templateUrl: 'app/templates/index.view.html', controller: 'MainController' }).
+		when('/', { redirectTo: '/search' }).
 		when('/about', { templateUrl: 'app/templates/about.view.html', controller: 'MainController' }).
 		when('/todos', { templateUrl: 'Home/Todo', controller: 'ToDoController' }).
 		when('/logfiles', { templateUrl: 'app/templates/logs.view.html', controller: 'LogFilesController' }).
         when('/search', { templateUrl: 'app/templates/search.view.html', controller: 'SearchController' }).
         when('/taxnotice/:id', { templateUrl: 'app/templates/taxnotice.view.html', controller: 'TaxNoticeController' }).
-		otherwise({ redirectTo: '/' });
+		otherwise({ redirectTo: '/search' });
 }]);
 
 //#region Ng directives
@@ -55,8 +55,25 @@ mainModule.directive('ngFocus', function () {
     			}
     		});
     	};
-    })
-    .directive('selectedWhen', function () {
+    }).
+directive('activeLink', ['$location', function (location) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs, controller) {
+            var clazz = attrs.activeLink;
+            scope.location = location;
+            scope.$watch('location.path()', function (newPath) {
+                if (attrs.href.substring(1) === newPath) {
+                    element.addClass(clazz);
+                } else {
+                    element.removeClass(clazz);
+                }
+            });
+        }
+
+    };
+
+}]).directive('selectedWhen', function () {
     	return function (scope, elm, attrs) {
     		scope.$watch(attrs.selectedWhen, function (shouldBeSelected) {
     			if (shouldBeSelected) {

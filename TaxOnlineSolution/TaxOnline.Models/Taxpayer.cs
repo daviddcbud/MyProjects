@@ -24,5 +24,12 @@ namespace TaxOnline.Models
         {
             TaxNotices = new List<TaxNotice>();
         }
+        public string FormattedAddress
+        {
+            get
+            {
+                return AddressLines + "\n" + City + " " + State + " " + Zip;
+            }
+        }
     }
 }

@@ -1,2 +1,25 @@
 ﻿<a href="" data-ng-click="goback()">Go Back</a>
-<h2>{{ id }}</h2>
+
+<br />
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="span3">
+            <span class="mylabel">Bill#</span>
+            {{ data.billNumber }} 
+        </div>
+        <div class="span3">
+            <span class="mylabel">Tax Year</span>
+            {{ data.taxYear }}
+        </div>
+        <div class="span3">
+            <span class="mylabel">Taxpayer</span><br />
+            {{ data.taxpayer.name }}
+            <br />
+            <span ng-bind-html-unsafe=" data.taxpayer.formattedAddress"></span>
+
+        </div>
+
+    </div>
+     
+</div>

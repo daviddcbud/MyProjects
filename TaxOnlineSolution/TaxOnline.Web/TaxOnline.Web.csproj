@@ -233,6 +233,7 @@
     <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TaxNoticeController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
@@ -260,6 +261,7 @@
     <Content Include="app\services\logger.js" />
     <Content Include="app\services\search.js" />
     <Content Include="app\services\state.js" />
+    <Content Include="app\services\taxnoticeloader.js" />
     <Content Include="app\services\utils.js" />
     <Content Include="app\templates\about.view.html" />
     <Content Include="app\templates\index.view.html" />
@@ -305,6 +307,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
+    <Content Include="Scripts\ui-bootstrap-custom-0.5.0.js" />
+    <Content Include="Scripts\ui-bootstrap-custom-tpls-0.5.0.js" />
     <Content Include="Scripts\utils.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

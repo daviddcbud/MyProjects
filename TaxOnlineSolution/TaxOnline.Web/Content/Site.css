@@ -277,13 +277,35 @@ footer {
 	opacity: 1;
 }
 
+ 
 .menu a:hover {
     text-decoration:none;
     
      
 }
-.menu {
+.menuitem {
+    background-color :#ddd;
+    border: solid 1px black;
+    border-radius:2px;
+}
+.menu  {
     border-bottom:2px solid black;
     margin:5px;
+    
 }
 [ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}
+
+
+.hidden {
+    visibility:hidden;
+    margin:0px;
+    display:inline;
+     
+} 
+.progressbar {
+    
+    margin:10px;
+}
+.mylabel {
+    font-weight:bold;
+}

@@ -8,6 +8,11 @@ namespace TaxOnline.Web
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            
+
+                bundles.Add(new ScriptBundle("~/bundles/custombootstrap").Include(
+                        "~/Scripts/ui-bootstrap-custom-0.5.0.js",
+                        "~/Scripts/ui-bootstrap-custom-tpls-0.5.0.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -42,6 +47,7 @@ namespace TaxOnline.Web
              "~/app/controllers/todo.controller.js",
              "~/app/controllers/logs.controller.js",
              "~/app/controllers/search.controller.js",
+             "~/app/services/taxnoticeloader.js",
              "~/app/controllers/taxnotice.controller.js",
              "~/Scripts/utils.js"
 

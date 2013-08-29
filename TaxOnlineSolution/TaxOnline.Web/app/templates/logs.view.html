@@ -1,11 +1,12 @@
-﻿LogFiles
-<select data-ng-change="filter()" data-ng-model="logtype" style="width:25%" class="form-control" data-ng-options="c for c in logtypes"></select>
+﻿LogFiles<br />
+<button class="btn btn-primary" data-ng-click="clear()">Clear</button>
+<select data-ng-change="filter()" data-ng-model="logtype" style="width: 25%" class="form-control" data-ng-options="c for c in logtypes"></select>
 <br />
 
 <ul>
 
-     
-     <li data-ng-repeat="log in logs"> {{ log.message }}</li>
 
-     
-  </ul>
+    <li data-ng-repeat="log in logs">{{ log.message }}</li>
+
+
+</ul>

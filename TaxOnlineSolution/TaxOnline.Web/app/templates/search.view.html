@@ -1,17 +1,14 @@
-﻿<form  class="form-inline">
-        <label for="searchType">Search Type</label>
-        <select  data-ng-model="searchtype" class="input-small" data-ng-options="c.name for c in searchtypes"></select> 
-        <label for="searchType" class="sr-only">Search For</label>
-        <input  class="input-small" type="text" data-ng-enter="search()" data-ng-model="searchfor" placeholder="Search..." />
-        <button class="btn btn-primary" data-ng-click="search()">Search</button>
-     
-</form> 
+﻿<form class="form-inline">
+    <label for="searchType">Search Type</label>
+    <select data-ng-model="searchtype" class="input-small" data-ng-options="c.name for c in searchtypes"></select>
+    <label for="searchType" class="sr-only">Search For</label>
+    <input class="input-small" type="text" data-ng-enter="search()" data-ng-model="searchfor" placeholder="Search..." />
+    <button class="btn btn-primary" data-ng-click="search()">Search</button>
 
-<img src="/Content/ajax-loader.gif" data-ng-show="loading" />
+</form>
 
-<div class="alert alert-warning" data-ng-show="showMessage">
-    {{message}}
-</div>
+
+
 <div data-ng-show="showResults">
     <h3>{{ results.length }} Results Found</h3>
     <table class="table table-striped">
@@ -24,9 +21,9 @@
         </thead>
         <tbody>
             <tr data-ng-repeat="result in results">
-                <td><a href="#/taxnotice/{{result.id}}">{{ result.billNumber }}</a></td>
+                <td><a data-ng-href="#/taxnotice/{{result.id}}">{{ result.billNumber }}</a></td>
                 <td>{{ result.name }}</td>
-                <td>{{ result.balance }}</td>
+                <td>{{ result.balance | currency }}</td>
             </tr>
         </tbody>
     </table>

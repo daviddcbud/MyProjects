@@ -21,6 +21,7 @@ namespace TaxOnline.Web.Controllers
         // GET api/search
         public IEnumerable<SearchViewModel> Get(string searchfor, int searchtype)
         {
+             
             var results = _repo.Search(searchfor, searchtype);
 
             var list = new List<SearchViewModel>();
