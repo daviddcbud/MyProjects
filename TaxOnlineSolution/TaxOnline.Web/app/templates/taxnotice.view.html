@@ -1,7 +1,9 @@
-﻿<a href="" data-ng-click="goback()">Go Back</a>
+﻿
 
-<br />
-<div class="container-fluid">
+<tabset>
+    <tab heading="Main Info" active="tab.active">
+
+        <div class="container-fluid">
     <div class="row-fluid">
 
         <div class="span3">
@@ -16,10 +18,23 @@
             <span class="mylabel">Taxpayer</span><br />
             {{ data.taxpayer.name }}
             <br />
-            <span ng-bind-html-unsafe=" data.taxpayer.formattedAddress"></span>
+            <span ng-bind-html-unsafe="data.taxpayer.formattedAddress"></span>
 
         </div>
 
     </div>
      
 </div>
+    </tab>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}"  >
+      {{tab.content}}
+    </tab>
+    <tab select="alertMe()">
+      <tab-heading>
+        <i class="icon-bell"></i> Select me for alert!
+      </tab-heading>
+      I've got an HTML heading, and a select callback. Pretty cool!
+    </tab>
+  </tabset>
+
+

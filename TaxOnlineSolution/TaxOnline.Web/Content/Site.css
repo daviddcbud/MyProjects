@@ -284,7 +284,7 @@ footer {
      
 }
 .menuitem {
-    background-color :#ddd;
+    background-color :#ECECEC;
     border: solid 1px black;
     border-radius:2px;
 }
@@ -308,4 +308,7 @@ footer {
 }
 .mylabel {
     font-weight:bold;
+}
+.nav   {
+    margin-bottom:1px !important;  
 }

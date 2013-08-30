@@ -31,7 +31,7 @@ mainModule.controller('BaseController',
         };
         logger.log("creating Menu BaseController");
 
-        $scope.addError('test');
+        //$scope.addError('test');
          
         function Menu(name, href, classname) {
             this.name = name;

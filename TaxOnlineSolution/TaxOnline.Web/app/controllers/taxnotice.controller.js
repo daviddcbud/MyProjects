@@ -4,6 +4,14 @@ mainModule.controller('TaxNoticeController',
     function ($scope, logger,  dblogger, $routeParams, taxnoticeloader) {
 
         logger.log('tax notice controller');
+        $scope.tabs = [];
+
+        
+       var  tab = { title: 'History', active: false, content: 'history' };
+        $scope.tabs.push(tab);
+        tab = { title: 'User Defined', active: true, content: 'hello' };
+        $scope.tabs.push(tab);
+
         $scope.id = $routeParams.id;
 
         $scope.setloading(true);
