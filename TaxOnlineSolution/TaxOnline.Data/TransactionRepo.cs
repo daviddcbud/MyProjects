@@ -8,18 +8,19 @@ using TaxOnline.Models;
 
 namespace TaxOnline.Data
 {
-    public class TaxNoticeRepo
+    public class TransactionRepo
     {
+        
         DataContext _context;
-        public TaxNoticeRepo(IPrincipal user)
+        public TransactionRepo(IPrincipal user)
         {
              _context=new DataContext();
             UserId = user.Identity.Name;
         }
         public string UserId { get; private set; }
-        public TaxNotice GetItemById(int id)
+        public Transaction GetItemById(int id)
         {
-            return _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Transactions.TransactionType").Where(x => x.Id == id).Single();
+            return _context.Transactions.Include("TransactionType").Where(x => x.Id == id).Single();
         }
     }
 }

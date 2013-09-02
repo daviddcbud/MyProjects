@@ -9,7 +9,7 @@ namespace TaxOnline.Data.Configuration
         {
             this.Property((p) => p.Id).HasColumnOrder(0);
             this.HasRequired<Taxpayer>(p => p.Taxpayer);
-
+            this.HasMany(p => p.Transactions);
         }
     }
 }

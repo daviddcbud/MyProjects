@@ -2,7 +2,7 @@
     <label for="searchType">Search Type</label>
     <select data-ng-model="searchtype" class="input-small" data-ng-options="c.name for c in searchtypes"></select>
     <label for="searchType" class="sr-only">Search For</label>
-    <input class="input-small" type="text" data-ng-enter="search()" data-ng-model="searchfor" placeholder="Search..." />
+    <input class="input-medium" type="text" autofocus  data-ng-enter="search()" data-ng-model="searchfor" placeholder="Search..." />
     <button class="btn btn-primary" data-ng-click="search()">Search</button>
 
 </form>

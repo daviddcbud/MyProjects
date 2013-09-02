@@ -237,6 +237,7 @@
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\ValidateHttpAntiForgeryTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -252,29 +253,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers\logs.controller.js" />
-    <Content Include="app\controllers\main.controller.js" />
-    <Content Include="app\controllers\base.controller.js" />
-    <Content Include="app\controllers\search.controller.js" />
-    <Content Include="app\controllers\taxnotice.controller.js" />
-    <Content Include="app\controllers\todo.controller.js" />
-    <Content Include="app\services\logger.js" />
-    <Content Include="app\services\search.js" />
-    <Content Include="app\services\state.js" />
-    <Content Include="app\services\taxnoticeloader.js" />
-    <Content Include="app\services\utils.js" />
+    <Content Include="app\scripts\controllers\logs.controller.js" />
+    <Content Include="app\scripts\controllers\main.controller.js" />
+    <Content Include="app\scripts\controllers\base.controller.js" />
+    <Content Include="app\scripts\controllers\search.controller.js" />
+    <Content Include="app\scripts\controllers\taxnotice.controller.js" />
+    <Content Include="app\scripts\controllers\transactiondetail.controller.js" />
+    <Content Include="app\scripts\directives\directives.js" />
+    <Content Include="app\scripts\filters\autocap.js" />
+    <Content Include="app\scripts\modernizer.js" />
+    <Content Include="app\scripts\services\logger.js" />
+    <Content Include="app\scripts\services\search.js" />
+    <Content Include="app\scripts\services\state.js" />
+    <Content Include="app\scripts\services\taxnoticeloader.js" />
+    <Content Include="app\scripts\services\transactionloader.js" />
+    <Content Include="app\scripts\services\utils.js" />
     <Content Include="app\templates\about.view.html" />
     <Content Include="app\templates\index.view.html" />
     <Content Include="app\templates\logs.view.html" />
     <Content Include="app\templates\search.view.html" />
     <Content Include="app\templates\taxnotice.view.html" />
-    <Content Include="app\templates\todos.view.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -288,28 +292,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="app\modules\main.module.js" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <None Include="Scripts\breeze.intellisense.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\breeze.debug.js" />
-    <Content Include="Scripts\breeze.min.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\q.js" />
-    <Content Include="Scripts\q.min.js" />
-    <Content Include="Scripts\ui-bootstrap-custom-0.5.0.js" />
-    <Content Include="Scripts\ui-bootstrap-custom-tpls-0.5.0.js" />
-    <Content Include="Scripts\utils.js" />
+    <Content Include="app\scripts\app.js" />
+    <Content Include="app\scripts\vendor\uibootstrap.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -317,22 +301,11 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="app\about.controller.js" />
-    <Content Include="app\about.logger.js" />
-    <Content Include="app\about.view.html" />
     <Content Include="app\ajaxlogin.js" />
-    <Content Include="app\todo.controller.js" />
-    <Content Include="app\todo.datacontext.js" />
-    <Content Include="app\todo.main.js" />
-    <Content Include="app\todo.model.js" />
-    <Content Include="app\todo.view.html" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\TodoList.css" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\breeze.savequeuing.js" />
+    <Content Include="app\scripts\vendor\angular.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -352,8 +325,8 @@
     <Content Include="Views\Home\_todo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -367,6 +340,9 @@
       <Project>{9e7117a0-733c-4a98-af44-5299bae8b696}</Project>
       <Name>TaxOnline.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\templates\transactiondetail.view.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -47,6 +47,8 @@
     <Compile Include="TaxNotice.cs" />
     <Compile Include="Taxpayer.cs" />
     <Compile Include="TodoItem.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

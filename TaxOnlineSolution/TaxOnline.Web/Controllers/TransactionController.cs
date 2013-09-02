@@ -10,38 +10,38 @@ using TaxOnline.Models;
 namespace TaxOnline.Web.Controllers
 {
     [Authorize]
-    public class TaxNoticeController : ApiController
+    public class TransactionController : ApiController
     {
-        TaxNoticeRepo _repo;
-        public TaxNoticeController()
+        TransactionRepo _repo;
+        public TransactionController()
         {
-            _repo = new TaxNoticeRepo(User);
+            _repo = new TransactionRepo(User);
         }
         // GET api/taxnotice
-        public IEnumerable<TaxNotice>  Get( )
+        public IEnumerable<Transaction>  Get( )
         {
             
             return null;
         }
 
         // GET api/taxnotice/5
-        public TaxNotice Get(int id)
+        public Transaction Get(int id)
         {
-            var taxnotice = _repo.GetItemById(id);
-            return taxnotice;
+            var result = _repo.GetItemById(id);
+            return result;
         }
 
-        // POST api/taxnotice
+        // POST api/transaction
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/taxnotice/5
+        // PUT api/transaction/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/taxnotice/5
+        // DELETE api/transaction/5
         public void Delete(int id)
         {
         }

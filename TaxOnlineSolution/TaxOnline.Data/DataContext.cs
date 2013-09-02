@@ -19,6 +19,8 @@ namespace TaxOnline.Data
         public DbSet<Taxpayer> Taxpayers { get; set; }
         public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<TaxNotice> TaxNotices { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionType> TransactionTypes { get; set; }
         public static string ConnectionStringName
         {
             get
@@ -67,6 +69,8 @@ namespace TaxOnline.Data
             modelBuilder.Configurations.Add(new TaxpayerConfiguration());
             modelBuilder.Configurations.Add(new ErrorLogConfiguration());
             modelBuilder.Configurations.Add(new TaxNoticeConfiguration());
+            modelBuilder.Configurations.Add(new TransactionTypeConfiguration());
+            modelBuilder.Configurations.Add(new TransactionConfiguration());
             //base.OnModelCreating(modelBuilder);
         }
     }

@@ -28,7 +28,7 @@ namespace TaxOnline.Models
         {
             get
             {
-                return AddressLines + "\n" + City + " " + State + " " + Zip;
+                return (AddressLines + "\n" + City + " " + State + " " + Zip).ToUpper();
             }
         }
     }

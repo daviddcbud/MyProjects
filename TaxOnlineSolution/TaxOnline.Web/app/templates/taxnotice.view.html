@@ -1,34 +1,89 @@
-﻿
-
-<tabset>
+﻿<tabset>
     <tab heading="Main Info" active="tab.active">
 
         <div class="container-fluid">
-    <div class="row-fluid">
 
-        <div class="span3">
+    <div class="row-fluid">
+        <div class="span2">
             <span class="mylabel">Bill#</span>
             {{ data.billNumber }} 
         </div>
-        <div class="span3">
+        <div class="span2">
             <span class="mylabel">Tax Year</span>
             {{ data.taxYear }}
         </div>
-        <div class="span3">
-            <span class="mylabel">Taxpayer</span><br />
-            {{ data.taxpayer.name }}
-            <br />
-            <span ng-bind-html-unsafe="data.taxpayer.formattedAddress"></span>
+       
+        <div class="span2">
+            <span class="mylabel">Email</span> 
+            {{ data.taxpayer.email }}
 
         </div>
+        <div class="span2">
+            <span class="mylabel">Phone#</span> 
+            {{ data.taxpayer.phoneNumber }}
 
+        </div>
     </div>
      
+<div class="row-fluid">
+     <div class="span3">
+            <span class="mylabel">Taxpayer</span><br />
+            <a href="#">{{ data.taxpayer.name | autocap }}</a>
+            <br />
+            <span ng-bind-html-unsafe="data.taxpayer.formattedAddress"></span>
+          
+        </div>
+</div>       
+
+
+         
+<h4>History</h4>  
+              
+            <div class="row-fluid">
+            <div class="span8">
+                   <table class="table table-striped">
+             <thead>
+                 <tr>
+                     <th></th>
+                     <th>Date</th>
+                     <th>Type</th>
+                     <th>Amount</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr data-ng-repeat="transaction in data.transactions">
+                     
+                     <td><a data-ng-href="#/transdetail/{{transaction.id}}">Details</a></td> 
+                     <td>{{ transaction.date | date:'MM-dd-yyyy' }}</td>
+                     <td>{{ transaction.transactionType.description  }}</td>
+                     <td>{{ transaction.amount | currency }}</td>
+                     
+                            
+                      
+                 </tr>
+                  
+             </tbody>
+         </table>
+                </div>
+
+               
+     
+
+
 </div>
     </tab>
-    <tab ng-repeat="tab in tabs" heading="{{tab.title}}"  >
+   <!-- <tab ng-repeat="tab in tabs" heading="{{tab.title}}"  >
       {{tab.content}}
-    </tab>
+    </tab>-->
+     <tab heading="User Defined" >
+         <div class="container-fluid">
+             <div class="row-fluid">
+              
+             </div>
+         </div>
+         
+     </tab>
+
     <tab select="alertMe()">
       <tab-heading>
         <i class="icon-bell"></i> Select me for alert!

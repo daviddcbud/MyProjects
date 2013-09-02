@@ -3,31 +3,72 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <title>Property Tax Online2</title>
+    <title>Property Tax Online</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <!-- Latest compiled and minified CSS -->
-    @* <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">*@
-
-    @*@Styles.Render("~/Content/bootstrap.min.css")*@
-    @* @Styles.Render("~/Content/themes/base/css")*@
+    <script src="~/app/scripts/modernizer.js"></script>
+    
 </head>
-<body data-ng-app="mainModule" data-ng-cloak="">
+<body data-ng-app="MyApp" data-ng-cloak="">
+
+     
+
     <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
-    <div id="userSettings">
-        @Html.Partial("_UserSettings")
-    </div>
-
-
 
     <div id="body" data-ng-controller="BaseController">
 
 
         @if (@User.Identity.IsAuthenticated)
-        {
+        { 
+
+            
+            <!-- NAVBAR
+    ================================================== -->
+            <div class="navbar-wrapper">
+                <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+                <div class="container" id="menucontainer">
+                    <div id="userSettings" class="pull-right">
+                        @Html.Partial("_UserSettings")
+                    </div>
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+                            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="brand" href="#">Property Tax Online</a>
+                            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+                            <div class="nav-collapse collapse">
+                                <ul class="nav">
+                                    <li data-ng-repeat="menu in menus"
+                                        class="{{menu.classname}}">
+                                        <a href="{{menu.href}}" data-ng-click="menuclick($index)">{{menu.name}}
+                          <b class="caret" style="border-top: 4px solid #FAECEC; vertical-align: initial" data-ng-show="menu.submenus.length > 0"></b></a>
+                                        <div data-ng-show="menu.submenuvisible">
+                                            <ul class="mydropdown" data-ng-repeat="submenu in menu.submenus">
+                                                <li><a href="{{submenu.href}}">{{submenu.name}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <!--/.nav-collapse -->
+                        </div>
+                        <!-- /.navbar-inner -->
+                    </div>
+                    <!-- /.navbar -->
+
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.navbar-wrapper -->
+@*
             
              
             <div class="container-fluid" id="mainmenu">
@@ -42,14 +83,14 @@
                 </ul>
             </div> 
             
-            <div class="row" style="margin-left:10px;">
+            *@<div class="row" style="margin-left: 10px;">
                 <div class="span6">
                     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                 </div>
             </div>
                 
-                
-            <img src="/Content/ajax-loader.gif" data-ng-class="{hidden: !loading}"  />
+           
+            <img src="/Content/ajax-loader.gif" data-ng-class="{hidden: !loading}" />
             <div style="padding: 10px;" data-ng-view="" data-ng-animate=" 'animate' "></div>
             <!-- The SPA Views go here -->
             
@@ -62,17 +103,35 @@
     </div>
 
 
+     
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
+    
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-    @Scripts.Render("~/bundles/custombootstrap")
+    <script src="~/app/scripts/vendor/uibootstrap.js"></script>
+    <script src="~/app/scripts/app.js"></script>
+    @Scripts.Render("~/bundles/directives")
+    @Scripts.Render("~/bundles/filters")
+    @Scripts.Render("~/bundles/services")
+    @Scripts.Render("~/bundles/controllers")
+    @*<script src="~/app/scripts/directives/directives.js"></script>
+    <script src="~/app/scripts/services/utils.js"></script>
+    <script src="~/app/scripts/services/logger.js"></script>
+    <script src="~/app/scripts/services/state.js"></script>
+    <script src="~/app/scripts/services/search.js"></script>
+    <script src="~/app/scripts/services/taxnoticeloader.js"></script>
+    <script src="~/app/scripts/controllers/logs.controller.js"></script>
+    <script src="~/app/scripts/controllers/base.controller.js"></script>
+    <script src="~/app/scripts/controllers/main.controller.js"></script>
+    <script src="~/app/scripts/controllers/search.controller.js"></script>
+    <script src="~/app/scripts/controllers/taxnotice.controller.js"></script>*@
+
+     
 
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    @Scripts.Render("~/bundles/mainscripts")
+     
     @Scripts.Render("~/bundles/ajaxlogin")
     @RenderSection("scripts", required: false)
 </body>

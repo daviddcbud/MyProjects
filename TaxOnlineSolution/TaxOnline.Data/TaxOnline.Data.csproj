@@ -56,6 +56,8 @@
     <Compile Include="Configuration\TaxNoticeConfiguration.cs" />
     <Compile Include="Configuration\TaxpayerConfiguration.cs" />
     <Compile Include="Configuration\TodoItemConfiguration.cs" />
+    <Compile Include="Configuration\TransactionConfiguration.cs" />
+    <Compile Include="Configuration\TransactionTypeConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataContextMigrationConfiguration.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="SearchRepo.cs" />
     <Compile Include="TaxNoticeRepo.cs" />
     <Compile Include="TodoItemRepository.cs" />
+    <Compile Include="TransactionRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaxOnline.Models\TaxOnline.Models.csproj">

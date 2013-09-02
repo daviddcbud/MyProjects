@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace TaxOnline.Models
 {
-    public class TaxNotice
+    public class TransactionType
     {
         public int Id { get; set; }
-        public string BillNumber { get; set; }
-        public int TaxYear { get; set; }
-        public string Type { get; set; }
-        public Taxpayer Taxpayer { get; set; }
+        public string Description { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
-        public TaxNotice()
+        public bool IsPayment { get; set; }
+        public TransactionType()
         {
             Transactions = new List<Transaction>();
         }

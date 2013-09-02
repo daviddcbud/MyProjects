@@ -2,4 +2,3 @@ C:\Users\david\Documents\Visual Studio 2012\Projects\VS2012Apps\TaxOnlineSolutio
 C:\Users\david\Documents\Visual Studio 2012\Projects\VS2012Apps\TaxOnlineSolution\TaxOnline.Models\bin\Debug\TaxOnline.Models.pdb
 C:\Users\david\Documents\Visual Studio 2012\Projects\VS2012Apps\TaxOnlineSolution\TaxOnline.Models\obj\Debug\TaxOnline.Models.dll
 C:\Users\david\Documents\Visual Studio 2012\Projects\VS2012Apps\TaxOnlineSolution\TaxOnline.Models\obj\Debug\TaxOnline.Models.pdb
-C:\Users\david\Documents\Visual Studio 2012\Projects\VS2012Apps\TaxOnlineSolution\TaxOnline.Models\obj\Debug\TaxOnline.Models.csprojResolveAssemblyReference.cache

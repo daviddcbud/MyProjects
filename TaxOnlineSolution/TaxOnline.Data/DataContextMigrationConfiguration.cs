@@ -28,32 +28,70 @@ namespace TaxOnline.Data
            {
                CreateIndex(context, "UserName", "Users", true);
 
-               var todo = new TodoItem();
-               todo.Message = "test";
-               context.TodoItems.Add(todo);
-               todo = new TodoItem();
-               todo.Message = "test2";
+
+
+
+               var transactionType = new TransactionType();
+               transactionType.Description = "TAXES";
+               context.TransactionTypes.Add(transactionType);
+               var taxtype = transactionType;
+               transactionType = new TransactionType();
+               transactionType.Description = "PAYMENT";
+               var paymentType = transactionType;
+               context.TransactionTypes.Add(transactionType);
+               transactionType = new TransactionType();
+               transactionType.Description = "INTEREST";
+               context.TransactionTypes.Add(transactionType);
 
                var taxpayer = new Taxpayer();
                taxpayer.Name = "Freeman, David";
                taxpayer.AddressLines = "3512 Main St";
                taxpayer.TaxYear = 2013;
+               taxpayer.City = "Shreveport";
+               taxpayer.State = "LA";
+               taxpayer.Zip = "71112";
+               taxpayer.Email = "dd@dd.com";
                var notice = new TaxNotice();
                notice.TaxYear = 2013;
                notice.BillNumber = "12342";
                taxpayer.TaxNotices.Add(notice);
                context.Taxpayers.Add(taxpayer);
 
+               var transaction = new Transaction();
+               transaction.TransactionType = taxtype;
+               transaction.Date = DateTime.Parse("10/1/12");
+               transaction.Amount = 310.23M;
+               notice.Transactions.Add(transaction);
+               transaction = new Transaction();
+               transaction.TransactionType = paymentType;
+               transaction.Date = DateTime.Parse("12/5/12");
+               transaction.Amount = -310.23M;
+               notice.Transactions.Add(transaction);
+
+
                taxpayer = new Taxpayer();
                taxpayer.Name = "Freeman, John";
                taxpayer.AddressLines = "3512 Main St";
                taxpayer.TaxYear = 2013;
+               taxpayer.City = "Shreveport";
+               taxpayer.State = "LA";
+               taxpayer.Zip = "71112";
+               taxpayer.Email = "dd@dd.com";
                notice = new TaxNotice();
                notice.TaxYear = 2013;
                notice.BillNumber = "12342";
                taxpayer.TaxNotices.Add(notice);
                context.Taxpayers.Add(taxpayer);
-               context.TodoItems.Add(todo);
+               transaction = new Transaction();
+               transaction.TransactionType = taxtype;
+               transaction.Date = DateTime.Parse("10/1/12");
+               transaction.Amount = 310.23M;
+               notice.Transactions.Add(transaction);
+               transaction = new Transaction();
+               transaction.TransactionType = paymentType;
+               transaction.Date = DateTime.Parse("12/5/12");
+               transaction.Amount = -310.23M;
+               notice.Transactions.Add(transaction);
            }
            base.Seed(context);
 
