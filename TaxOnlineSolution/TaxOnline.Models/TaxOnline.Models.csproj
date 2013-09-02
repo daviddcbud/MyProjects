@@ -43,6 +43,7 @@
     <Compile Include="IAudit.cs" />
     <Compile Include="Membership.cs" />
     <Compile Include="OAuthMembership.cs" />
+    <Compile Include="Parcel.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="TaxNotice.cs" />
     <Compile Include="Taxpayer.cs" />

@@ -1,4 +1,17 @@
-﻿ 
+﻿myapp.directive('ngDsFade', function () {
+    return function (scope, element, attrs) {
+        scope.$watch(attrs.ngDsFade, function (value) {
+           
+            if (value) {
+
+                element.fadeOut(5000);
+            }
+            else {
+                element.fadeIn(200);
+            }
+        });
+    };
+});
 
     //#region Ng directives
     /*  We extend Angular with custom data bindings written as Ng directives */

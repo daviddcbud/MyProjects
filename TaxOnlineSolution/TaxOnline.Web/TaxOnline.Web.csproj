@@ -261,6 +261,7 @@
     <Content Include="app\scripts\controllers\transactiondetail.controller.js" />
     <Content Include="app\scripts\directives\directives.js" />
     <Content Include="app\scripts\filters\autocap.js" />
+    <Content Include="app\scripts\filters\autolinebreaks.js" />
     <Content Include="app\scripts\modernizer.js" />
     <Content Include="app\scripts\services\logger.js" />
     <Content Include="app\scripts\services\search.js" />

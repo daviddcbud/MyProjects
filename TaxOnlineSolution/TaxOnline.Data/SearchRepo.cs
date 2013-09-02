@@ -32,17 +32,17 @@ namespace TaxOnline.Data
             switch (searchType)
             {
                 case SearchType.Name: //name
-                    var taxpayerquery = _context.TaxNotices.Include("Taxpayer").Where(p => p.Taxpayer.Name.StartsWith(searchFor));
+                    var taxpayerquery = _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Parcels").Where(p => p.Taxpayer.Name.StartsWith(searchFor));
                     return taxpayerquery.ToList();
 
                 case SearchType.BillNumber: //bill#
-                    var billquery = _context.TaxNotices.Include("Taxpayer").Where(p => p.BillNumber.StartsWith(searchFor));
+                    var billquery = _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Parcels").Where(p => p.BillNumber.StartsWith(searchFor));
                     return billquery.ToList();
 
                 case SearchType.Address:
-                    //var addrquery = _context.TaxNotices.Include("Taxpayer").Where(p => p..Name.StartsWith(searchFor));
-                    //return addrquery.ToList();
-                    return new List<TaxNotice>();
+                    var query = _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Parcels").Where(p => p.Parcels.Any(x=>x.PhysicalAddress.Contains(searchFor)));
+                    return query.ToList();
+                     
                      
                 default:
                     return new List<TaxNotice>();

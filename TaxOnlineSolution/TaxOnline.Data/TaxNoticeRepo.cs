@@ -19,7 +19,7 @@ namespace TaxOnline.Data
         public string UserId { get; private set; }
         public TaxNotice GetItemById(int id)
         {
-            return _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Transactions.TransactionType").Where(x => x.Id == id).Single();
+            return _context.TaxNotices.Include("Taxpayer").Include("Transactions").Include("Parcels").Include("Transactions.TransactionType").Where(x => x.Id == id).Single();
         }
     }
 }

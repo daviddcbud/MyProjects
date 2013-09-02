@@ -21,6 +21,7 @@ namespace TaxOnline.Data
         public DbSet<TaxNotice> TaxNotices { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionType> TransactionTypes { get; set; }
+        public DbSet<Parcel> Parcels { get; set; }
         public static string ConnectionStringName
         {
             get

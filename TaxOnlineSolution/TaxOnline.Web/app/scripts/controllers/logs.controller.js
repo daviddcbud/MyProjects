@@ -16,7 +16,7 @@
             for (var item in $scope.alllogs) {
                 var logitem = $scope.alllogs[item];
 
-                if (($.inArray(logitem.type, $scope.logtypes))) {
+                if (!($.inArray(logitem.type, $scope.logtypes))) {
 
                     $scope.logtypes.push(logitem.type);
                 }

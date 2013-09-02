@@ -42,7 +42,10 @@ myapp.controller('TaxNoticeController',
             function success(data) {
 
                 logger.log('success load');
-                data.taxpayer.formattedAddress = data.taxpayer.formattedAddress.replace('\n', '<br/>');
+                //data.taxpayer.formattedAddress = data.taxpayer.formattedAddress.replace('\n', '<br/>');
+                //for (var parcel in data.parcels) {
+                //    data.parcels[parcel].legal = data.parcels[parcel].legal.replace('\n', '<br/>');
+                //}
                 angular.copy(data, $scope.data);
                 $scope.setloading(false);
 

@@ -19,23 +19,13 @@ namespace TaxOnline.Web.Controllers
             _repo = new SearchRepo(User);
         }
         // GET api/search
-        public IEnumerable<SearchViewModel> Get(string searchfor, int searchtype)
+        public IEnumerable<TaxNotice> Get(string searchfor, int searchtype)
         {
              
             var results = _repo.Search(searchfor, searchtype);
 
-            var list = new List<SearchViewModel>();
-            foreach (var item in results)
-            {
-                var result = new SearchViewModel();
-                result.Balance = 100.00M;
-                result.Id = item.Id;
-                result.BillNumber = item.BillNumber;
-                result.Name = item.Taxpayer.Name;
-                result.TaxYear = item.TaxYear;
-                list.Add(result);
-            }
-            return list;
+          
+            return results;
         }
 
         // GET api/search/5

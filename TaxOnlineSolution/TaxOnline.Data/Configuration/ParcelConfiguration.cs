@@ -8,15 +8,14 @@ using TaxOnline.Models;
 
 namespace TaxOnline.Data.Configuration
 {
-    public class TransactionConfiguration : EntityTypeConfiguration<Transaction >
+    public class ParcelConfiguration : EntityTypeConfiguration<Parcel>
     {
-        public TransactionConfiguration()
+        public ParcelConfiguration()
         {
             this.Property((p) => p.Id).HasColumnOrder(0);
-            this.HasRequired<TransactionType>(p => p.TransactionType);
             this.HasRequired<TaxNotice>(p => p.TaxNotice);
-            this.Property((p) => p.Amount).IsRequired();
-            this.Property((p) => p.Date).HasColumnType("date").IsRequired();
+            this.Property((p) => p.Number).HasMaxLength(20).HasColumnType("nvarchar").IsRequired();
+            this.Property((p) => p.PhysicalAddress).HasMaxLength(100).HasColumnType("nvarchar").IsRequired();
         }
 
     }

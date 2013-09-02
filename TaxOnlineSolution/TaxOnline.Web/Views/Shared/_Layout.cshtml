@@ -11,13 +11,13 @@
     <script src="~/app/scripts/modernizer.js"></script>
     
 </head>
-<body data-ng-app="MyApp" data-ng-cloak="">
+<body data-ng-app="MyApp" data-ng-cloak="" >
 
      
 
     <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
 
-    <div id="body" data-ng-controller="BaseController">
+    <div id="body" data-ng-controller="BaseController" >
 
 
         @if (@User.Identity.IsAuthenticated)
@@ -46,12 +46,14 @@
                                 <ul class="nav">
                                     <li data-ng-repeat="menu in menus"
                                         class="{{menu.classname}}">
-                                        <a href="{{menu.href}}" data-ng-click="menuclick($index)">{{menu.name}}
+                                        <a   href="{{menu.href}}" data-ng-click="menuclick($index)">{{menu.name}}
                           <b class="caret" style="border-top: 4px solid #FAECEC; vertical-align: initial" data-ng-show="menu.submenus.length > 0"></b></a>
                                         <div data-ng-show="menu.submenuvisible">
-                                            <ul class="mydropdown" data-ng-repeat="submenu in menu.submenus">
-                                                <li><a href="{{submenu.href}}">{{submenu.name}}</a></li>
+                                            <ul class="mydropdown" >
+                                                <li class="submenuitem" data-ng-repeat="submenu in menu.submenus"><a href="{{submenu.href}}">{{submenu.name}}</a></li>
+                                               
                                             </ul>
+                                           
                                         </div>
                                     </li>
 
@@ -91,7 +93,7 @@
                 
            
             <img src="/Content/ajax-loader.gif" data-ng-class="{hidden: !loading}" />
-            <div style="padding: 10px;" data-ng-view="" data-ng-animate=" 'animate' "></div>
+            <div data-ng-click="closemenu()" style="padding: 10px;" data-ng-view="" data-ng-animate=" 'animate' "></div>
             <!-- The SPA Views go here -->
             
         }

@@ -52,6 +52,7 @@
     <Compile Include="Configuration\ErrorLogConfiguration.cs" />
     <Compile Include="Configuration\MembershipConfiguratoin.cs" />
     <Compile Include="Configuration\OAuthMembership.cs" />
+    <Compile Include="Configuration\ParcelConfiguration.cs" />
     <Compile Include="Configuration\RolesConfiguration.cs" />
     <Compile Include="Configuration\TaxNoticeConfiguration.cs" />
     <Compile Include="Configuration\TaxpayerConfiguration.cs" />

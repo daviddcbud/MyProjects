@@ -29,7 +29,7 @@ myapp.controller('BaseController',
             $scope.clearError = function () {
                 $scope.alerts = [];
             };
-             
+            
             $scope.addError = function (errorMessage) {
                 if (errorMessage == null || errorMessage.trim()=='') {
                     errorMessage = 'Unexpected Error';
@@ -38,6 +38,7 @@ myapp.controller('BaseController',
                 
                 $scope.alerts.push(alert);
                 logger.log(errorMessage);
+               
             };
             $scope.setloading = function (data) {
                 $scope.loading = data;
@@ -54,15 +55,26 @@ myapp.controller('BaseController',
                 this.submenuvisible = false;
             }
 
+            $scope.closemenu = function () {
+                for (var menu in $scope.menus) {
+                    var menuItemToEdit = $scope.menus[menu];
+                    menuItemToEdit.submenuvisible = false;
+                }
+            }
+            $scope.$on('$locationChangeSuccess', function (event) {
+                for (var menu in $scope.menus) {
+                    var menuItemToEdit = $scope.menus[menu];
+                    menuItemToEdit.submenuvisible = false;
+                }
+            });
             $scope.menuclick = function (index) {
 
                 var menuitem = $scope.menus[index];
                 for (var menu in $scope.menus) {
                     var menuItemToEdit = $scope.menus[menu];
                     menuItemToEdit.submenuvisible = false;
-
                 }
-                menuitem.submenuvisible = true;
+                if(menuitem.submenus.length > 0) menuitem.submenuvisible = true;
             }
             var menus = [];
             var menu = new Menu("Search", "", "");

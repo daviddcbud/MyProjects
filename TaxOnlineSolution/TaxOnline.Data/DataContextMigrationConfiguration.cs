@@ -27,9 +27,13 @@ namespace TaxOnline.Data
            if (context.TodoItems.Count() == 0)
            {
                CreateIndex(context, "UserName", "Users", true);
+           }
 
-
-
+           context.Database.ExecuteSqlCommand("Delete from transactions");
+           context.Database.ExecuteSqlCommand("Delete from transactiontypes");
+           context.Database.ExecuteSqlCommand("Delete from parcels");
+           context.Database.ExecuteSqlCommand("Delete from taxnotices");
+           context.Database.ExecuteSqlCommand("Delete from taxpayers");
 
                var transactionType = new TransactionType();
                transactionType.Description = "TAXES";
@@ -45,6 +49,7 @@ namespace TaxOnline.Data
 
                var taxpayer = new Taxpayer();
                taxpayer.Name = "Freeman, David";
+               taxpayer.PhoneNumber = "3184323333";
                taxpayer.AddressLines = "3512 Main St";
                taxpayer.TaxYear = 2013;
                taxpayer.City = "Shreveport";
@@ -53,14 +58,21 @@ namespace TaxOnline.Data
                taxpayer.Email = "dd@dd.com";
                var notice = new TaxNotice();
                notice.TaxYear = 2013;
-               notice.BillNumber = "12342";
+               notice.BillNumber = "90123";
                taxpayer.TaxNotices.Add(notice);
+               var parcel = new Parcel();
+               parcel.Number = "1233";
+               parcel.Legal = "LOT 13 XXX SOME OTHER DATA\nANOTHER LINE OF LEGAL";
+               parcel.PhysicalAddress = "123 MAIN ST";
+               parcel.TaxNotice = notice;
+               notice.Parcels.Add(parcel);
                context.Taxpayers.Add(taxpayer);
 
                var transaction = new Transaction();
                transaction.TransactionType = taxtype;
                transaction.Date = DateTime.Parse("10/1/12");
                transaction.Amount = 310.23M;
+               
                notice.Transactions.Add(transaction);
                transaction = new Transaction();
                transaction.TransactionType = paymentType;
@@ -70,6 +82,7 @@ namespace TaxOnline.Data
 
 
                taxpayer = new Taxpayer();
+               taxpayer.PhoneNumber = "3184323333";
                taxpayer.Name = "Freeman, John";
                taxpayer.AddressLines = "3512 Main St";
                taxpayer.TaxYear = 2013;
@@ -81,6 +94,12 @@ namespace TaxOnline.Data
                notice.TaxYear = 2013;
                notice.BillNumber = "12342";
                taxpayer.TaxNotices.Add(notice);
+               parcel = new Parcel();
+               parcel.Number = "1233";
+               parcel.PhysicalAddress = "123 MAIN ST";
+               parcel.TaxNotice = notice;
+               parcel.Legal = "LOT 13 XXX SOME OTHER DATA\nANOTHER LINE OF LEGAL";
+               notice.Parcels.Add(parcel);
                context.Taxpayers.Add(taxpayer);
                transaction = new Transaction();
                transaction.TransactionType = taxtype;
@@ -92,7 +111,7 @@ namespace TaxOnline.Data
                transaction.Date = DateTime.Parse("12/5/12");
                transaction.Amount = -310.23M;
                notice.Transactions.Add(transaction);
-           }
+           //}
            base.Seed(context);
 
        }
